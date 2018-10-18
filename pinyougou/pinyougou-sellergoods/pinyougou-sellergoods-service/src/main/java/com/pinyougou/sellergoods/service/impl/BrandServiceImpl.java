@@ -1,6 +1,7 @@
 package com.pinyougou.sellergoods.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Service;
+import com.github.pagehelper.PageHelper;
 import com.pinyougou.mapper.BrandMapper;
 import com.pinyougou.pojo.TbBrand;
 import com.pinyougou.sellergoods.service.BrandService;
@@ -15,5 +16,11 @@ public class BrandServiceImpl implements BrandService {
     @Override
     public List<TbBrand> queryAll() {
         return brandMapper.queryAll();
+    }
+
+    @Override
+    public List<TbBrand> testPage(Integer page, Integer rows) {
+        PageHelper.startPage(page,rows);
+        return brandMapper.selectAll();
     }
 }
