@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/angular.min.js"></script>
+    <script>
+        var app = angular.module("app",[]);
+        app.controller("mycontroller",function ($scope,$http) {
+            $http.get("data.json")
+                .success(function (response) {
+                $scope.persons=response;
+                })
+                .error(function () {
+                alert("服务器忙")
+                })
+        })
+    </script>
+</head>
+<body ng-app="app" ng-controller="mycontroller">
+<div ng-repeat="p in persons">
+    {{p.id}}
+    {{p.name}}
+</div>
+
+</body>
+</html>

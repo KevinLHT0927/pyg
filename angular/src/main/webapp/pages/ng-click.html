@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="../js/angular.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>angular测试</title>
+    <script>
+        var app=angular.module("app",[]);
+        app.controller("mycontroller",function ($scope) {
+            $scope.add=function () {
+                $scope.z=parseInt($scope.x)+parseInt($scope.y);
+            }
+        })
+    </script>
+</head>
+<body ng-app="app" ng-controller="mycontroller">
+<input ng-model="x" ng-init="x=123"><br>
+<input ng-model="y" ng-init="y=123"><br>
+<button ng-click="add()">计算</button>
+x+y={{z}}
+</body>
+</html>
