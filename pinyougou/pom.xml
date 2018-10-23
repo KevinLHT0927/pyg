@@ -15,6 +15,7 @@
         <module>pinyougou-sellergoods</module>
         <module>pinyougou-manage-web</module>
         <module>../angular</module>
+        <module>pinyougou-shop-web</module>
     </modules>
 
     <properties>

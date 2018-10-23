@@ -78,14 +78,19 @@ app.controller("itemCatController", function ($scope, $controller, itemCatServic
 
         switch (grade){
             case 1:
+                //entity={id:0}
                 $scope.entity_1 = null;
                 $scope.entity_2 = null;
                 break;
             case 2:
+                //entity={id:2}
+                //entity_1  =   1级分类
                 $scope.entity_1 = entity;
                 $scope.entity_2 = null;
                 break;
             default:
+                //entity={id:10}
+                //$scope.entity_2 = 2级分类
                 $scope.entity_2 = entity;
         }
 

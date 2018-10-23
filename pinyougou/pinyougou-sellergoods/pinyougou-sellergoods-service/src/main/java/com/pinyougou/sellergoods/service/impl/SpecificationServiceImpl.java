@@ -30,7 +30,6 @@ public class SpecificationServiceImpl extends BaseServiceImpl<TbSpecification> i
     @Override
     public PageResult search(Integer page, Integer rows, TbSpecification specification) {
         PageHelper.startPage(page, rows);
-
         Example example = new Example(TbSpecification.class);
         Example.Criteria criteria = example.createCriteria();
         if(!StringUtils.isEmpty(specification.getSpecName())){

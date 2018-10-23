@@ -73,7 +73,8 @@ public class TypeTemplateController {
      * @return
      */
     @PostMapping("/search")
-    public PageResult search(@RequestBody  TbTypeTemplate typeTemplate, @RequestParam(value = "page", defaultValue = "1")Integer page,
+    public PageResult search(@RequestBody  TbTypeTemplate typeTemplate,
+                             @RequestParam(value = "page", defaultValue = "1")Integer page,
                                @RequestParam(value = "rows", defaultValue = "10")Integer rows) {
         return typeTemplateService.search(page, rows, typeTemplate);
     }

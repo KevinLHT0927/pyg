@@ -80,6 +80,10 @@ public class SpecificationController {
         return specificationService.search(page, rows, specification);
     }
 
+    /*
+      获得模板查询的列表
+            前端要求的数据
+     */
     @GetMapping("/selectOptionList")
     public List<Map<String,String>> selectOptionList(){
         return specificationService.selectOptionList();

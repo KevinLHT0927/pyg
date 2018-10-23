@@ -57,6 +57,7 @@ app.controller("specificationController", function ($scope, $controller, specifi
     };
 
     $scope.searchEntity = {};//初始为空
+
     $scope.search = function (page, rows) {
         specificationService.search(page, rows, $scope.searchEntity).success(function (response) {
             $scope.list = response.rows;
