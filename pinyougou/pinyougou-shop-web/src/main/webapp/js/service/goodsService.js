@@ -25,6 +25,14 @@ app.service("goodsService",function ($http) {
         return $http.get("../goods/delete.do?ids=" + selectedIds);
     };
 
+    this.putAway = function (selectedIds) {
+        return $http.get("../goods/putAway.do?ids=" + selectedIds);
+    };
+
+    this.soldOut = function (selectedIds) {
+        return $http.get("../goods/soldOut.do?ids=" + selectedIds);
+    };
+
     this.search = function (page, rows, searchEntity) {
         return $http.post("../goods/search.do?page=" + page + "&rows=" + rows, searchEntity);
 

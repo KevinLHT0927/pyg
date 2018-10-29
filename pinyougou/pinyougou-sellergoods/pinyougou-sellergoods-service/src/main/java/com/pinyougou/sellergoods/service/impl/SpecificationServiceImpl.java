@@ -8,7 +8,7 @@ import com.pinyougou.mapper.SpecificationOptionMapper;
 import com.pinyougou.pojo.TbSpecification;
 import com.pinyougou.pojo.TbSpecificationOption;
 import com.pinyougou.sellergoods.service.SpecificationService;
-import com.pinyougou.service.impl.BaseServiceImpl;
+import com.pinyougou.content.service.impl.BaseServiceImpl;
 import com.pinyougou.vo.PageResult;
 import com.pinyougou.vo.Specification;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +45,8 @@ public class SpecificationServiceImpl extends BaseServiceImpl<TbSpecification> i
     @Override
     public void add(Specification specification) {
         //新增规格
-        specificationMapper.insert(specification.getSpecification());
+        specificationMapper.insertSelective(specification.getSpecification());
+        //add(specification.getSpecification());
         //新增规格选项
         if(specification.getSpecificationOptionList()!=null
                 &&specification.getSpecificationOptionList().size()>0){
@@ -70,11 +71,15 @@ public class SpecificationServiceImpl extends BaseServiceImpl<TbSpecification> i
 
     @Override
     public void update(Specification specification) {
+        //更新规格
         specificationMapper.updateByPrimaryKeySelective(specification.getSpecification());
+        //update(specification.getSpecification());
+        //先删除就的规格选项,再新增新的规格选项
         TbSpecificationOption param = new TbSpecificationOption();
         param.setSpecId(specification.getSpecification().getId());
         specificationOptionMapper.delete(param);
         for (TbSpecificationOption tbSpecificationOption  :specification.getSpecificationOptionList() ) {
+            //把规格的id设置到每个规格选项中,因为每个规格选项都有对应的规格
             tbSpecificationOption.setSpecId(specification.getSpecification().getId());
             specificationOptionMapper.insertSelective(tbSpecificationOption);
         }
@@ -82,7 +87,9 @@ public class SpecificationServiceImpl extends BaseServiceImpl<TbSpecification> i
 
     @Override
     public void deleteSpecificationByIds(Long[] ids) {
+        //删除规格
         deleteByIds(ids);
+        //删除规格下面的选项
         Example example = new Example(TbSpecificationOption.class);
         example.createCriteria().andIn("specId", Arrays.asList(ids));
         specificationOptionMapper.deleteByExample(example);

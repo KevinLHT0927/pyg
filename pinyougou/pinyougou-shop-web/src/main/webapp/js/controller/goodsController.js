@@ -20,7 +20,6 @@ app.controller("goodsController", function ($scope, $controller, $location, good
 
     $scope.save = function () {
         var object;
-
         //设置商品内容
         $scope.entity.goodsDesc.introduction=editor.html();
 
@@ -85,6 +84,40 @@ app.controller("goodsController", function ($scope, $controller, $location, good
             });
         }
     };
+
+    $scope.putAway = function () {
+        if($scope.selectedIds.length < 1){
+            alert("请先选择要上架的记录");
+            return;
+        }
+        if(confirm("确定要上架已选择的记录吗")){
+            goodsService.putAway($scope.selectedIds).success(function (response) {
+                if(response.success){
+                    $scope.reloadList();
+                    $scope.selectedIds = [];
+                } else {
+                    alert(response.message);
+                }
+            });
+        }
+    };
+    $scope.soldOut = function () {
+        if($scope.selectedIds.length < 1){
+            alert("请先选择要下架的记录");
+            return;
+        }
+        if(confirm("确定要下架已选择的记录吗")){
+            goodsService.soldOut($scope.selectedIds).success(function (response) {
+                if(response.success){
+                    $scope.reloadList();
+                    $scope.selectedIds = [];
+                } else {
+                    alert(response.message);
+                }
+            });
+        }
+    };
+
 
     $scope.searchEntity = {};//初始为空
     $scope.search = function (page, rows) {

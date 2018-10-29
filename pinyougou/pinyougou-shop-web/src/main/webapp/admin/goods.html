@@ -26,7 +26,7 @@
     <script src="../js/service/uploadService.js"></script>
     <script src="../js/service/itemCatService.js"></script>
     <script src="../js/service/typeTemplateService.js"></script>
-    <script src="../js/controller/baseController.js"></script>
+    <script src="../js/controller/BaseController.js"></script>
     <script src="../js/controller/goodsController.js"></script>
 
 </head>
@@ -50,8 +50,8 @@
                                         <button type="button" class="btn btn-default" title="新建" ><i class="fa fa-file-o"></i> 新建</button>
                                         <button type="button" class="btn btn-default" ng-click="delete()"><i class="fa fa-trash-o"></i> 删除</button>
                                         <button type="button" class="btn btn-default" ng-click="updateStatus('1')"><i class="fa fa-trash-o"></i> 提交审核</button>
-                                        <button type="button" class="btn btn-default" title="上架" ><i class="fa fa-check"></i> 上架</button>
-                                        <button type="button" class="btn btn-default" title="下架" ><i class="fa fa-check"></i> 下架</button>
+                                        <button type="button" class="btn btn-default" title="上架" ng-click="putAway()"><i class="fa fa-check"></i> 上架</button>
+                                        <button type="button" class="btn btn-default" title="下架" ng-click="soldOut()"><i class="fa fa-check"></i> 下架</button>
                                         <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新</button>
                                     </div>
                                 </div>

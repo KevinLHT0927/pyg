@@ -28,7 +28,7 @@
     <script src="../js/service/uploadService.js"></script>
     <script src="../js/service/itemCatService.js"></script>
     <script src="../js/service/typeTemplateService.js"></script>
-    <script src="../js/controller/baseController.js"></script>
+    <script src="../js/controller/BaseController.js"></script>
     <script src="../js/controller/goodsController.js"></script>
 
 </head>
@@ -57,7 +57,8 @@
                             <li >
                                 <a href="#spec" data-toggle="tab" >规格</a>                                                        
                             </li>                       
-                        </ul>
+                        </ul>{{entity.goods.category1Id}},{{entity.goods.category2Id}},{{entity.goods.category3Id}}
+
                         <!--tab头/-->
 						
                         <!--tab内容-->

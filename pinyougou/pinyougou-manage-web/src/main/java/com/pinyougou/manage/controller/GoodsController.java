@@ -57,7 +57,7 @@ public class GoodsController {
     @GetMapping("/delete")
     public Result delete(Long[] ids) {
         try {
-            goodsService.deleteByIds(ids);
+            goodsService.deleteGoodsByIds(ids);
             return Result.ok("删除成功");
         } catch (Exception e) {
             e.printStackTrace();
@@ -78,4 +78,14 @@ public class GoodsController {
         return goodsService.search(page, rows, goods);
     }
 
+    @GetMapping("/updateStatus")
+    public Result updateStatus(Long[] ids,String status){
+        try {
+            goodsService.updateStatus(ids,status);
+            return Result.ok("提交成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Result.fail("提交失败");
+    }
 }
